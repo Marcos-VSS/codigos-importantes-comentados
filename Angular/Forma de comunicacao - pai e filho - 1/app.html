@@ -1,0 +1,27 @@
+@if(urlAtual !== "/login") {
+  <app-header [menuAberto]="menuAberto" (menuToggle)="toggleMenu()"></app-header>
+}
+
+<main>
+  <div class="page-bg" aria-hidden="true">
+    <div class="page-body">
+      <div class="sidebar" [class.sidebar--open]="menuAberto">
+        <nav>
+          <a routerLink="/home" (click)="toggleMenu()">Home</a>
+          <a routerLink="/members" (click)="toggleMenu()">Membros</a>
+          <a routerLink="/refund" (click)="toggleMenu()">Reembolso</a>
+          <a routerLink="/member-file" (click)="toggleMenu()">Ficha Individual</a>
+          <a routerLink="/warnings" (click)="toggleMenu()"> Advertências</a>
+        </nav>
+      </div>
+
+      <div class="page-main">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</main>
+
+@if(urlAtual !== "/login") {
+  <app-footer></app-footer>
+}

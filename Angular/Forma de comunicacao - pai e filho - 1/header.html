@@ -1,0 +1,15 @@
+<header class="header">
+  <div>
+    <img src="img/menu - Copia.png" alt="Menu" class="icone-menu" (click)="toggleMenu()">
+  </div>
+
+  <div (click)="goHome()">
+    <img src="img/logo-mecajun - Copia.png" alt="Logo da Mecajun" class="icone-mecajun" [class.icone-mecajun--shifted]="menuAberto()">
+  </div>
+
+  <div>
+    <img src="img/notificacao - Copia.png" class="icone-header">
+    <img src="img/logout - Copia.png" class="icone-header">
+    <img src="img/capivara - Copia.png" alt="Foto Usuário" class="icone-capivara">
+  </div>
+</header>

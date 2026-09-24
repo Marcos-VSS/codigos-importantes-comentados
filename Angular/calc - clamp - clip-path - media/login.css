@@ -1,0 +1,179 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.front-image {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    height: 100%;
+    margin-left: 49vw;
+    clip-path: polygon(32% 0%, 48.5% 0%, 100% 8.2%, 100% 100%, -0.9% 100%);
+}
+
+.backplace{
+    padding-left: 7vmax;
+    padding-right: 7vmax;
+    border-radius: 50px;
+    width: clamp(500px, 220vh, 1700px);
+    min-height: 200px;
+    max-height: 85vh;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 0 100px 0px rgb(160, 160, 160);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: center;
+}
+
+.backplace-content {
+    margin-top: 2vh;
+    width: 40%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.mecapivara-login {
+    height: calc(11vmin + 100px);
+    width: calc(11vmin + 100px);
+}
+
+.infoblock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info {
+    font-size:calc(10px + 3vmin);
+    font-weight: bold;
+}
+
+.info:nth-child(1) {
+    padding-top: 1vmin;
+}
+
+.info:nth-child(2) {
+    padding-bottom: 3vmin;
+}
+
+.login-button {
+    font-weight: normal;
+    padding: 2vmin;
+    font-size:calc(3.1px + 2.1vmin);
+    width: calc(18vmin + 140px);
+    border-radius: 50px;
+    border: 0.4vmin solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #c2e1ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-mecajun {
+    height: calc(10vmin + 90px);
+    width: calc(10vmin + 90px);
+}
+
+.login-button:hover {
+    
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+@media (max-height: 500px) {
+    .front-image {
+        display: none;
+    }
+
+    .backplace-content {
+        margin-top: 2vh;;
+        width: 100%;
+        height: 95%;
+    }
+}
+
+@media (max-width: 2000px) {
+    .container {
+        padding:50px;
+    }
+}
+
+@media (max-height: 500px) and (min-width: 600px) {
+    .backplace{
+        padding-left: 4vmax;
+        padding-right: 4vmax;
+    }
+
+    .backplace-content {
+        flex-direction: row;
+    }
+
+    .mecapivara-login {
+        height: 42vmin;
+        width: 42vmin;
+    }
+
+    .logo-mecajun {
+        height: 50vmin;
+        width: 50vmin;
+    }
+}
+
+@media (max-height: 500px) and (max-width: 600px) {
+    .backplace-content {
+        padding-top: 5vmin;
+        justify-content: center;
+        gap: 4vmin
+    }
+
+    .mecapivara-login {
+        display: none;
+    }
+
+    .logo-mecajun {
+        height: 25vmin;
+        width: 25vmin;
+    }
+}
+
+@media (max-aspect-ratio: 16/10) and (max-aspect-ratio: 16/9) {
+    .front-image {
+        display: none;
+    }
+
+    .backplace-content {
+        margin-top: 2vh;;
+        width: 100%;
+        height: 95%;
+    }
+}
+
+@media (min-aspect-ratio: 36/10){
+    .front-image {
+        display: none;
+    }
+
+    .backplace-content {
+        margin-top: 2vh;;
+        width: 100%;
+        height: 95%;
+    }
+}
