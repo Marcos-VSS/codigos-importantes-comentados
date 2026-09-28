@@ -2,40 +2,40 @@
 CREATE DATABASE nome-qualquer;
 
 **Criar tabela para o banco de de dados:**\
-CREATE TABLE nome-tabela(
-    coluna1 tipo param,
-    coluna2 tipo param
+CREATE TABLE nome-tabela( \
+    &emsp;coluna1 tipo param, \
+    &emsp;coluna2 tipo param \
 )
 
 **Adicionar registros na tabela:**\
-INSERT INTO nome-tabela (coluna1, coluna2, ...)
-VALUES (val1, val2, ...),
-       (val1, val2, ...)
+INSERT INTO nome-tabela (coluna1, coluna2, ...) \
+VALUES (val1, val2, ...), \
+       &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;(val1, val2, ...) \
 ;
 
 **Buscar os registros feitos na tabela:**
-- buscar todos os registros:\
+- **buscar todos os registros:**\
 SELECT * FROM nome-tabela;
 
-- buscar registros em uma coluna específica:\
+- **buscar registros em uma coluna específica:**\
 SELECT nome-coluna FROM nome-tabela;
 
-- buscar um valor específico nos registros:\
+- **buscar um valor específico nos registros:**\
 SELECT * FROM nome-tabela WHERE nome-coluna LIKE padrao;
 
-- buscar um valor completo nos registros:\
+- **buscar um valor completo nos registros:**\
 SELECT * FROM nome-tabela WHERE nome-coluna = 'valor completo';
 
-- buscar valores específicos nos registros:\
+- **buscar valores específicos nos registros:**\
 SELECT * FROM nome-tabela WHERE nome-coluna LIKE padrao1 OR nome-coluna LIKE padrao2;
 
 <br>
 
 **Ordenar os registros feitos na tabela:**
-- ordenar por uma coluna de a-z ou de 0-9 (cresente):\
+- **ordenar por uma coluna de a-z ou de 0-9 (cresente):**\
 SELECT * FROM nome-tabela ORDER BY nome-coluna ASC;
 
-- ordenar por uma coluna de forma descrescente:\
+- **ordenar por uma coluna de forma descrescente:**\
 SELECT * FROM nome-tabela ORDER BY nome-coluna DESC;
 
 <br>
@@ -50,19 +50,49 @@ UPDATE nome-tabela SET nome-coluna = 'novo valor' WHERE elemento-unico = "escolh
 DELETE FROM usuarios WHERE elemento-unico = "escolhido";
 
 **Adicionar colunas na tabela:**\
-ALTER TABLE nome-tabela
-ADD COLUMN nova-coluna1 tipo padrao,
-ADD COLUMN nova-coluna2 tipo padrao
+ALTER TABLE nome-tabela \
+ADD COLUMN nova-coluna1 tipo padrao, \
+ADD COLUMN nova-coluna2 tipo padrao \
 ;
 
 **Excluir colunas de uma tabela:**\
-ALTER TABLE nome-tabela
-DROP COLUMN nome-coluna1,
-DROP COLUMN nome-coluna2
+ALTER TABLE nome-tabela \
+DROP COLUMN nome-coluna1, \
+DROP COLUMN nome-coluna2 \
 ;
 
 **Excluir tabela:**\
 DROP TABLE nome-tabela;
+
+**Renomear uma coluna:**\
+ALTER TABLE nome-tabela \
+RENAME COLUMN nome-antigo TO nome-novo;
+
+**Mudar o tipo de dado de um elemento e seus parâmetros:**\
+ALTER TABLE nome-tabela \
+  &emsp;**-- 2. Mudar o tipo de dado (com conversão explícita)**\
+  &emsp;ALTER COLUMN nome_coluna TYPE NOVO_TIPO USING nome-coluna::NOVO_TIPO,\
+  &emsp;**-- 3. (Opcional) Definir se aceita NULL ou NOT NULL**\
+  &emsp;ALTER COLUMN nome-coluna SET NOT NULL,\
+  &emsp;**-- 4. (Opcional) Definir ou remover o valor padrão (DEFAULT)**\
+  &emsp;ALTER COLUMN nome-coluna SET DEFAULT 'valor_padrao';
+
+**Colocar uma chave estrangeira pra uma coluna que está sendo criada referenciar:**\
+CREATE TABLE nome-tabela (\
+    &emsp;... \
+\
+    &emsp;CONSTRAINT fk_nome_qualquer **--sempre dê o nome para a restrição, fica mais fácil na manutenção**\
+        &emsp;&emsp;FOREIGN KEY (nome-coluna)\
+        &emsp;&emsp;REFERENCES nome-tabela-estrangeira(coluna-tabela-estrangeira)\
+)
+
+**Adicionar uma chave estrangeira pra uma coluna que já existe referenciar:**\
+ALTER TABLE nome-tabela\
+ADD CONSTRAINT fk_nome-qualquer\
+FOREIGN KEY (nome-coluna)\
+REFERENCES nome-tabela-estrangeira(coluna-tabela-estrangeira)\
+
+<br>
 
 __*#alguns parâmetros:*__
 - PRIMARY KEY: a coluna servirá como chave primária
