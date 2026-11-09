@@ -95,6 +95,13 @@ REFERENCES nome-tabela-estrangeira(coluna-tabela-estrangeira)\
 **Resetar a sequência do tipo SERIAL para algum número base:**\
 SELECT setval(pg_get_serial_sequence('nome-tabela', 'nome-coluna'), 1, false); **--O false é pra que o próximo item comece pelo número escolhido (nesse caso, foi escolhido 1)**\
 
+**Consultar o tipo de dado de uma coluna de certa tabela:**\
+SELECT data_type\
+FROM information_schema.columns\ 
+WHERE table_schema = 'public' **-- Opcional, ajuste se estiver usando outro schema**\
+  AND table_name = 'nome_da_tabela'\
+  AND column_name = 'nome_da_coluna';\
+
 <br>
 
 __*#alguns parâmetros:*__
